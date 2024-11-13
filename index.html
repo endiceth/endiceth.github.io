@@ -11,7 +11,7 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color: #333; 
+  background-color: #333;
 }
 
 .navbar a {
@@ -40,22 +40,28 @@ body {
 }
 
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: red;
+  background-color: white;
+  color: black;
 }
 
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color: red;
+  background-color: white;
   width: 100%;
   z-index: 1;
+  border-top-style: solid;
+  border-bottom-style: solid;
 }
 
 .subnav-content a {
   float: left;
-  color: white;
+  color: black;
   text-decoration: none;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-width: 0.5px;
 }
 
 .subnav-content a:hover {
@@ -69,7 +75,6 @@ body {
 </style>
 </head>
 <body>
-
 <div class="navbar">
   <div class="subnav">
     <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
@@ -77,6 +82,7 @@ body {
       <a href="#button1">button1</a>
       <a href="#button2">button2</a>
       <a href="#button3">button3</a>
+      <a href="#button4">button4</a>
     </div>
   </div> 
   <div class="subnav">
@@ -99,11 +105,11 @@ body {
   </div>
   <a href="#Info">Info</a>
 </div>
-
 <div style="padding:0 16px">
   <h3>General content</h3>
   <p>Hopefully will insert a text editor here later</p>
 </div>
-
 </body>
 </html>
+
+
