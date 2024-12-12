@@ -23,7 +23,7 @@
          color: black;
          background-color: white;
          text-align: center;
-         padding: 14px 16px;
+         padding: 1px 3px;
          text-decoration: none;
          }
          .topnavbar headline {
@@ -89,27 +89,32 @@
          <div class="subnav">
             <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-               <a href="#button1">button1</a>
-               <a href="#button2">button2</a>
-               <a href="#button3">button3</a>
-               <a href="#button4">button4</a>
+               <a href="#button1">New File</a>
+               <a href="#button2">Open File</a>
+               <a href="#button3">Save</a>
+               <a href="#button4">Save As</a>
             </div>
          </div>
          <div class="subnav">
             <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-               <a href="#button1">button1</a>
+               <a href="#button1">Rename File</a>
                <a href="#button2">button2</a>
                <a href="#button3">button3</a>
                <a href="#button4">button4</a>
             </div>
          </div>
-         <a href="#Info">Info</a>
+         <a href="#Info"><p id="FileNamePrint"></p></a>
       </div>
       <!-- Navbar end -->
       <div style="padding:0 16px">
          <h3>General content</h3>
          <p>Hopefully will insert a text editor here later</p>
       </div>
-   </resize-content></body>
+   </resize-content>
+   <script>
+      let FileNameVar = "New File";
+      document.getElementById("FileNamePrint").innerHTML = FileNameVar; 
+      </script>
+   </body>
 </html>
