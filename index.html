@@ -3,6 +3,17 @@
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script>
+      function UpdateName() {
+        let tempFileNameVar = prompt("Rename:", FileNameVar);
+        if (tempFileNameVar = null) {
+          alert("The FileName was blank, Please try again");
+        } else {
+          let FileNameVar = tempFileNameVar;
+          document.getElementById("FileNamePrint").innerHTML = FileNameVar;
+        }
+      }
+      </script>
       <style>
          body {
          font-family: Arial, Helvetica, sans-serif;
@@ -98,7 +109,7 @@
          <div class="subnav">
             <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-               <a href="#button1">Rename File</a>
+               <a onclick="UpdateName()">Rename File</a>
                <a href="#button2">button2</a>
                <a href="#button3">button3</a>
                <a href="#button4">button4</a>
@@ -115,6 +126,6 @@
    <script>
       let FileNameVar = "New File";
       document.getElementById("FileNamePrint").innerHTML = FileNameVar; 
-      </script>
+   </script>
    </body>
 </html>
