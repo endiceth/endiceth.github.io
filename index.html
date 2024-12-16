@@ -4,15 +4,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script>
-      function UpdateName() {
-        let tempFileNameVar = prompt("Rename:", FileNameVar);
-        if (tempFileNameVar = null) {
-          alert("The FileName was blank, Please try again");
-        } else {
-          let FileNameVar = tempFileNameVar;
-          document.getElementById("FileNamePrint").innerHTML = FileNameVar;
-        }
-      }
       </script>
       <style>
          body {
@@ -125,7 +116,19 @@
    </resize-content>
    <script>
       let FileNameVar = "New File";
-      document.getElementById("FileNamePrint").innerHTML = FileNameVar; 
+      document.getElementById("FileNamePrint").innerHTML = FileNameVar;
+      
+      
+      function UpdateName() {
+        let tempFileNameVar = prompt("Rename:", FileNameVar);
+        if (tempFileNameVar == "") {
+            alert("The FileName was blank, Please try again");
+        } 
+        else {
+            FileNameVar = tempFileNameVar;
+            document.getElementById("FileNamePrint").innerHTML = FileNameVar;
+        }
+      }
    </script>
    </body>
 </html>
