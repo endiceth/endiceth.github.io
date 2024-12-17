@@ -96,7 +96,7 @@
          <div class="subnav">
             <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
-               <a href="#button1">New File</a>
+               <a onclick="NewFileStart()">New File</a>
                <a href="#button2">Open File</a>
                <a href="#button3">Save</a>
                <a href="#button4">Save As</a>
@@ -113,24 +113,34 @@
          </div>
          <a href="#Info"><p id="FileNamePrint"></p></a>
       </div>
-         <textarea type="text"></textarea>
+         <textarea type="text" id="FilePrintH"></textarea>
       </div>
    </resize-content>
    <script>
-      let FileNameVar = "Filename:" + "New File";
-      document.getElementById("FileNamePrint").innerHTML = FileNameVar;
-      
-      
+      let FileNameVar = "New_File.txt";
+      document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
       function UpdateName() {
-        let tempFileNameVar = prompt("Rename:", FileNameVar);
+        let FileNameVarNEW = FileNameVar;
+        CheckName(FileNameVarNEW);
+      }
+	  function NewFileStart() {
+        if (confirm("This will RESET the textpad") == true) {
+        let FileNameVarNEW = "New_File.txt";
+ 	  	CheckName(FileNameVarNEW);
+        document.getElementById("FilePrintH").value = "";
+        }
+ 	  }
+ 	  function CheckName(FileNameVarNEW) {
+        let tempFileNameVar = prompt("Rename:", FileNameVarNEW);
         if (tempFileNameVar == "") {
-            alert("The FileName was blank, Please try again");
+          alert("The FileName was blank, Please try again");
+          CheckName();
         } 
         else {
-            FileNameVar = tempFileNameVar;
-            document.getElementById("FileNamePrint").innerHTML = "Filename:" + FileNameVar;
+          FileNameVar = tempFileNameVar;
+          document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
         }
-      }
+ 	  }
    </script>
    </body>
 </html>
