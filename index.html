@@ -125,9 +125,13 @@
       }
 	  function NewFileStart() {
         if (confirm("This will RESET the textpad") == true) {
-        let FileNameVarNEW = "New_File.txt";
- 	  	CheckName(FileNameVarNEW);
-        document.getElementById("FilePrintH").value = "";
+          let FileNameVarNEW = "New_File.txt";
+          CheckName(FileNameVarNEW);
+          document.getElementById("FilePrintH").value = "";
+        }
+ 	  }
+      function OpenFileStart() {
+        if (confirm("This will OVERRIDE the textpad") == true) {
         }
  	  }
  	  function CheckName(FileNameVarNEW) {
