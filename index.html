@@ -97,7 +97,7 @@
             <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
                <a onclick="NewFileStart()">New File</a>
-               <a href="#button2">Open File</a>
+               <a onclick="OpenFileJS()">Open File</a>
                <a href="#button3">Save</a>
                <a href="#button4">Save As</a>
             </div>
@@ -106,7 +106,7 @@
             <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
                <a onclick="UpdateName()">Rename File</a>
-               <a href="#button2">button2</a>
+               <a href="#button2"></a>
                <a href="#button3">button3</a>
                <a href="#button4">button4</a>
             </div>
@@ -117,6 +117,14 @@
       </div>
    </resize-content>
    <script>
+      function OpenFileJS() {
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.click();
+        input.onchange = function() {
+        	document.getElementById("FilePrintH").value = input.file;
+        };
+      }
       let FileNameVar = "New_File.txt";
       document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
       function UpdateName() {
