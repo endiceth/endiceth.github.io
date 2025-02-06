@@ -3,8 +3,7 @@
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script>
-      </script>
+      <script></script>
       <style>
          body {
          font-family: Arial, Helvetica, sans-serif;
@@ -73,86 +72,99 @@
          display: grid;
          }
          resize-content {
-           overflow: auto;
-           resize: both;
-           display: block;
-           border-style: solid;
-           border-width: 1px;
-           max-width: 98%;
-           min-width: 205px;
+         overflow: auto;
+         resize: both;
+         display: block;
+         border-style: solid;
+         border-width: 1px;
+         max-width: 98%;
+         min-width: 205px;
          }
          textarea {
-           width: 100%;
-           height: 100%;
-           border: 0px;
+         width: 100%;
+         height: 100%;
+         border: 0px;
          }
       </style>
    </head>
-   <body><resize-content>
-      <div class="topnavbar">
-         <headline>Text editor web</headline>
-      </div>
-      <div class="navbar">
-         <div class="subnav">
-            <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-               <a onclick="NewFileStart()">New File</a>
-               <a onclick="OpenFileJS()">Open File</a>
-               <a href="#button3">Save</a>
-               <a href="#button4">Save As</a>
-            </div>
+   <body>
+      <resize-content>
+         <div class="topnavbar">
+            <headline>Text editor web</headline>
          </div>
-         <div class="subnav">
-            <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
-            <div class="subnav-content">
-               <a onclick="UpdateName()">Rename File</a>
-               <a href="#button2"></a>
-               <a href="#button3">button3</a>
-               <a href="#button4">button4</a>
+         <div class="navbar">
+            <div class="subnav">
+               <button class="subnavbtn">File <i class="fa fa-caret-down"></i></button>
+               <div class="subnav-content">
+                  <a onclick="NewFileStart()">New File</a>
+                  <input type="file" id="file-input" />
+                  <a href="#button3">Save</a>
+                  <a href="#button4">Save As</a>
+               </div>
             </div>
+            <div class="subnav">
+               <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
+               <div class="subnav-content">
+                  <a onclick="UpdateName()">Rename File</a>
+                  <a href="#button2"></a>
+                  <a href="#button3">button3</a>
+                  <a href="#button4">button4</a>
+               </div>
+            </div>
+            <a href="#Info">
+               <p id="FileNamePrint"></p>
+            </a>
          </div>
-         <a href="#Info"><p id="FileNamePrint"></p></a>
-      </div>
-         <textarea type="text" id="FilePrintH"></textarea>
-      </div>
-   </resize-content>
-   <script>
-      function OpenFileJS() {
-        var input = document.createElement('input');
-        input.type = 'file';
-        input.click();
-        input.onchange = function() {
-        	document.getElementById("FilePrintH").value = input.file;
-        };
-      }
-      let FileNameVar = "New_File.txt";
-      document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
-      function UpdateName() {
-        let FileNameVarNEW = FileNameVar;
-        CheckName(FileNameVarNEW);
-      }
-	  function NewFileStart() {
-        if (confirm("This will RESET the textpad") == true) {
-          let FileNameVarNEW = "New_File.txt";
-          CheckName(FileNameVarNEW);
-          document.getElementById("FilePrintH").value = "";
-        }
- 	  }
-      function OpenFileStart() {
-        if (confirm("This will OVERRIDE the textpad") == true) {
-        }
- 	  }
- 	  function CheckName(FileNameVarNEW) {
-        let tempFileNameVar = prompt("Rename:", FileNameVarNEW);
-        if (tempFileNameVar == "") {
-          alert("The FileName was blank, Please try again");
-          CheckName();
-        } 
-        else {
-          FileNameVar = tempFileNameVar;
-          document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
-        }
- 	  }
-   </script>
+         <textarea id="file-content"></textarea>
+         </div>
+      </resize-content>
+      <script>
+         function readSingleFile(input) {
+         var file = input.target.files[0];
+         if (!file) {
+         return;
+         }
+         var reader = new FileReader();
+         reader.onload = function(input) {
+         var contents = input.target.result;
+         displayContents(contents);
+         };
+         reader.readAsText(file);
+         }
+         
+         function displayContents(contents) {
+         	document.getElementById('file-content').textContent = contents;
+         }
+         let FileNameVar = "New_File.txt";
+         document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
+         function UpdateName() {
+           let FileNameVarNEW = FileNameVar;
+           CheckName(FileNameVarNEW);
+         }
+         function NewFileStart() {
+           if (confirm("This will RESET the textpad") == true) {
+             let FileNameVarNEW = "New_File.txt";
+             CheckName(FileNameVarNEW);
+             document.getElementById('file-content').textContent = "HHHH";
+           }
+         }
+         function OpenFileStart() {
+           if (confirm("This will OVERRIDE the textpad") == true) {
+           }
+         }
+         function CheckName(FileNameVarNEW) {
+           let tempFileNameVar = prompt("Rename:", FileNameVarNEW);
+           if (tempFileNameVar == "") {
+             alert("The FileName was blank, Please try again");
+             CheckName();
+           } 
+           else {
+             FileNameVar = tempFileNameVar;
+             document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
+           }
+         }
+         document.getElementById('file-input')
+         .addEventListener('change', readSingleFile, false);
+      </script>
    </body>
 </html>
