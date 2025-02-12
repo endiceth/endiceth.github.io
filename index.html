@@ -146,6 +146,8 @@
          displayContents(contents);
          };
          reader.readAsText(file);
+         var FileNameVar = input.target.files[0].name;
+         document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
          }
          
          function displayContents(contents) {
