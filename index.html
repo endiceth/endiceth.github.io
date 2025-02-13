@@ -115,7 +115,7 @@
                   <a onclick="NewFileStart()">New File</a>
                   <input class="a" type="file" id="file-input"/>
                   <a onclick="SaveFileStart()">Save</a>
-                  <a href="#button4">Save As</a>
+                  <a onclick="SaveAs()">Save As</a>
                </div>
             </div>
             <div class="subnav">
@@ -178,6 +178,10 @@
 
             // Remove anchor from body
             document.body.removeChild(a);
+         }
+         function SaveAs() {
+           UpdateName();
+           SaveFileStart();
          }
          function OpenFileStart() {
            if (confirm("This will OVERRIDE the textpad") == true) {
