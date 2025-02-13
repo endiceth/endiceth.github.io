@@ -114,7 +114,7 @@
                <div class="subnav-content">
                   <a onclick="NewFileStart()">New File</a>
                   <input class="a" type="file" id="file-input"/>
-                  <a href="#button3">Save</a>
+                  <a onclick="SaveFileStart()">Save</a>
                   <a href="#button4">Save As</a>
                </div>
             </div>
@@ -131,7 +131,7 @@
                <p id="FileNamePrint"></p>
             </a>
          </div>
-         <textarea id="file-content"></textarea>
+         <textarea id="file-content" name="file"></textarea>
          </div>
       </resize-content>
       <script>
@@ -165,6 +165,19 @@
              CheckName(FileNameVarNEW);
              document.getElementById('file-content').textContent = "";
            }
+         }
+         function SaveFileStart() {
+           	var a = window.document.createElement('a');
+            var contents = document.getElementById("file-content").value;
+            a.href = window.URL.createObjectURL(new Blob([contents], {type: 'text/csv'}));
+            a.download = FileNameVar;
+
+            // Append anchor to body.
+            document.body.appendChild(a);
+            a.click();
+
+            // Remove anchor from body
+            document.body.removeChild(a);
          }
          function OpenFileStart() {
            if (confirm("This will OVERRIDE the textpad") == true) {
