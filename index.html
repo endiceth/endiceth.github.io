@@ -4,7 +4,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script>
-      let emptystop = 0;
       </script>
       <style>
          body {
@@ -105,6 +104,13 @@
          height: 100%;
          border: 0px;
          }
+         .dark-mode1 {
+          background-color: #333;
+          color: gray;
+		 }
+         .dark-mode2{
+         background-color: #dadada;
+         }
       </style>
    </head>
    <body>
@@ -126,7 +132,7 @@
                <button class="subnavbtn">Edit <i class="fa fa-caret-down"></i></button>
                <div class="subnav-content">
                   <a onclick="UpdateName()">Rename File</a>
-                  <a href="#button2"></a>
+                  <a onclick="darkmode()">Dark/Light</a>
                   <a href="#button3">button3</a>
                   <a href="#button4">button4</a>
                </div>
@@ -206,6 +212,12 @@
            }
            emptystop = 1;
          }
+         function darkmode() {
+            var element = document.body;
+            var element1 = document.getElementById('file-content');
+            element.classList.toggle("dark-mode1");
+   			element1.classList.toggle("dark-mode2");
+		 }
          document.getElementById('file-input')
          .addEventListener('change', readSingleFile, false);
       </script>
