@@ -213,13 +213,13 @@
            emptystop = 1;
          }
          function darkmode() {
-            var element = document.body;
-            var element1 = document.getElementById('file-content');
-            element.classList.toggle("dark-mode1");
-   			element1.classList.toggle("dark-mode2");
+            document.body.classList.toggle("dark-mode1");
+   			document.getElementById('file-content').classList.toggle("dark-mode2");
 		 }
          document.getElementById('file-input')
          .addEventListener('change', readSingleFile, false);
       </script>
    </body>
 </html>
+
+
