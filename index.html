@@ -168,7 +168,7 @@
            if (confirm("This will RESET the textpad") == true) {
              let FileNameVarNEW = "New_File.txt";
              CheckName(FileNameVarNEW);
-             document.getElementById('file-content').textContent = "";
+             document.getElementById('file-content').value = "";
            }
          }
          function SaveFileStart() {
@@ -186,13 +186,7 @@
          }
          function SaveAs() {
            UpdateName();
-           if(emptystop != 0){
-           	SaveFileStart();
-           }
-         }
-         function OpenFileStart() {
-           if (confirm("This will OVERRIDE the textpad") == true) {
-           }
+           SaveFileStart();
          }
          function CheckName(FileNameVarNEW) {
            let tempFileNameVar = prompt("Rename:", FileNameVarNEW);
@@ -203,9 +197,7 @@
            else if(tempFileNameVar != null){
              FileNameVar = tempFileNameVar;
              document.getElementById("FileNamePrint").innerHTML = "Filename: " + FileNameVar;
-             emptystop = 0;
            }
-           emptystop = 1;
          }
          function darkmode() {
             document.body.classList.toggle("dark-mode1");
